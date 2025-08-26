@@ -1,1 +1,26 @@
 @import "tailwindcss";
+
+:root {
+  --black: #000000;
+  --charcoal: #2f4550;
+  --paynes-gray: #586f7c;
+  --light-blue: #b8dbd9;
+  --ghost-white: #f4f4f9;
+
+  /* Roles */
+  --color-bg: var(--black);
+  --color-surface: var(--charcoal);
+  --color-surface-blur: rgba(47, 69, 80, 0.85); /* charcoal w/ opacity */
+  --color-text: var(--ghost-white);
+  --color-text-muted: var(--light-blue);
+  --color-accent: var(--light-blue);
+}
+
+body {
+  background: linear-gradient(to bottom, var(--black), var(--charcoal));
+  color: var(--color-text);
+}
+
+  
+  
+  
