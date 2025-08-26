@@ -1,16 +1,12 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
+<BaseLayout title="Pratik — Portfolio">
+  <h1 class="text-4xl md:text-5xl font-semibold tracking-tight">Pratik — Software Engineer</h1>
+  <p class="mt-3 text-white/70">Data systems & ML infrastructure. MS CS @ CU Boulder.</p>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+  <div class="mt-8 flex gap-4">
+    <a href="/resume" class="px-4 py-2 rounded-xl border border-white/20 bg-white/5">View Resume</a>
+    <a href="/projects" class="px-4 py-2 rounded-xl border border-white/20">See Projects</a>
+  </div>
+</BaseLayout>

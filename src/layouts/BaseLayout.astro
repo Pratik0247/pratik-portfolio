@@ -1,0 +1,33 @@
+---
+import "../styles/global.css";
+const { title = "Pratik" } = Astro.props;
+---
+<html lang="en" class="bg-[#0b0b0c] text-[#e5e7eb]">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="sticky top-0 z-50 backdrop-blur bg-black/30">
+      <nav class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+        <a href="/" class="font-semibold">Pratik</a>
+        <div class="flex gap-5 text-sm">
+          <a href="/projects">Projects</a>
+          <a href="/experience">Experience</a>
+          <a href="/resume">Resume</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 py-10">
+      <slot />
+    </main>
+
+    <footer class="border-t border-white/10 mt-16">
+      <div class="max-w-5xl mx-auto px-6 py-6 text-sm text-white/70">
+        © {new Date().getFullYear()} Pratik Bhirud
+      </div>
+    </footer>
+  </body>
+</html>
