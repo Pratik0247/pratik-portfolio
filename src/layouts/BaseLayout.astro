@@ -2,6 +2,7 @@
 import "../styles/global.css";
 const { title = "Pratik" } = Astro.props;
 ---
+
 <html lang="en" class="bg-[#0b0b0c] text-[#e5e7eb]">
   <head>
     <meta charset="utf-8" />
@@ -10,14 +11,38 @@ const { title = "Pratik" } = Astro.props;
   </head>
   <body>
     <header class="sticky top-0 z-50 backdrop-blur bg-black/30">
-      <nav class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
-        <a href="/" class="font-semibold">Pratik</a>
-        <div class="flex gap-5 text-sm">
-          <a href="/projects">Projects</a>
-          <a href="/experience">Experience</a>
-          <a href="/resume">Resume</a>
+      <nav
+        id="main-nav"
+        class="fixed top-0 w-full z-50 opacity-0 pointer-events-none transition-opacity duration-700"
+      >
+        <div
+          class="flex justify-between items-center px-6 py-4 bg-[var(--black)]/80 backdrop-blur-md"
+        >
+          <a href="/" class="font-bold text-[var(--ghost-white)]">Pratik</a>
+          <div class="flex gap-6 text-[var(--light-blue)]">
+            <a href="#projects" class="hover:text-[var(--ghost-white)]"
+              >Projects</a
+            >
+            <a href="#experience" class="hover:text-[var(--ghost-white)]"
+              >Experience</a
+            >
+            <a href="/resume" class="hover:text-[var(--ghost-white)]">Resume</a>
+          </div>
         </div>
       </nav>
+
+      <script>
+        const nav = document.getElementById("main-nav");
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > window.innerHeight * 0.6) {
+            nav.classList.remove("opacity-0", "pointer-events-none");
+            nav.classList.add("opacity-100");
+          } else {
+            nav.classList.add("opacity-0", "pointer-events-none");
+            nav.classList.remove("opacity-100");
+          }
+        });
+      </script>
     </header>
 
     <main class="max-w-5xl mx-auto px-6 py-10">

@@ -1,0 +1,127 @@
+---
+const sections = [
+  { id: "resume", label: "Download Resume", link: "/resume", type: "resume" },
+  {
+    id: "experience",
+    label: "Experience",
+    link: "#experience",
+    type: "section",
+  },
+  { id: "projects", label: "Projects", link: "#projects", type: "section" },
+  { id: "contact", label: "Contact", link: "#contact", type: "section" },
+];
+---
+
+<!-- Desktop / Tablet: Vertical Pill Nav -->
+<div
+  id="floating-nav"
+  class="hidden md:inline-flex fixed right-4 top-1/3 flex-col gap-3 z-50 opacity-0 pointer-events-none transition-opacity duration-700"
+>
+  {
+    sections.map((s) => (
+      <a
+        id={`nav-${s.id}`}
+        data-type={s.type}
+        href={s.link}
+        class={`px-5 py-2 rounded-full text-sm font-medium text-center 
+          backdrop-blur-md transition-all duration-300 ease-out
+          ${
+            s.type === "resume"
+              ? "bg-[var(--charcoal)]/90 border border-[var(--light-blue)] text-[var(--ghost-white)] shadow-[0_0_15px_var(--light-blue)] animate-pulse"
+              : "bg-[var(--charcoal)]/70 border border-[var(--paynes-gray)]/40 text-[var(--light-blue)] hover:text-[var(--ghost-white)] hover:border-[var(--light-blue)] hover:shadow-[0_0_10px_var(--light-blue)]"
+          }`}
+      >
+        {s.label}
+      </a>
+    ))
+  }
+</div>
+
+<!-- Mobile: Bottom Floating Pills -->
+<div
+  id="bottom-nav"
+  class="md:hidden fixed bottom-4 left-1/2 -translate-x-1/2 flex gap-3 z-50 opacity-0 pointer-events-none transition-opacity duration-700"
+>
+  {sections.map((s) => (
+    <a
+      id={`nav-mobile-${s.id}`}
+      data-type={s.type}
+      href={s.link}
+      class={`inline-flex items-center px-4 py-2 rounded-full text-xs font-medium text-center
+              backdrop-blur-md transition-all duration-300 ease-out
+              ${
+                s.type === "resume"
+                  ? "bg-[var(--charcoal)]/90 border border-[var(--light-blue)] text-[var(--ghost-white)] shadow-[0_0_15px_var(--light-blue)] animate-pulse"
+                  : "bg-[var(--charcoal)]/70 border border-[var(--paynes-gray)]/40 text-[var(--light-blue)] hover:text-[var(--ghost-white)] hover:border-[var(--light-blue)] hover:shadow-[0_0_10px_var(--light-blue)]"
+              }`}
+    >
+      {s.label}
+    </a>
+  ))}
+</div>
+
+
+<script>
+  const navDesktop = document.getElementById("floating-nav");
+  const navMobile = document.getElementById("bottom-nav");
+
+  // Show navs only after hero
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > window.innerHeight * 0.6) {
+      navDesktop?.classList.remove("opacity-0", "pointer-events-none");
+      navDesktop?.classList.add("opacity-100");
+      navMobile?.classList.remove("opacity-0", "pointer-events-none");
+      navMobile?.classList.add("opacity-100");
+    } else {
+      navDesktop?.classList.add("opacity-0", "pointer-events-none");
+      navDesktop?.classList.remove("opacity-100");
+      navMobile?.classList.add("opacity-0", "pointer-events-none");
+      navMobile?.classList.remove("opacity-100");
+    }
+  });
+
+  // Scrollspy for section pills
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const navLink = document.getElementById(`nav-${entry.target.id}`);
+        const navMobileLink = document.getElementById(
+          `nav-mobile-${entry.target.id}`,
+        );
+
+        [navLink, navMobileLink].forEach((link) => {
+          if (link && link.dataset.type !== "resume") {
+            if (entry.isIntersecting) {
+              link.classList.add(
+                "bg-[var(--charcoal)]/90",
+                "border-[var(--light-blue)]",
+                "text-[var(--ghost-white)]",
+                "shadow-[0_0_10px_var(--light-blue)]",
+              );
+              if (link.id.startsWith("nav-")) {
+                link.classList.add("translate-x-[-4px]");
+              } else {
+                link.classList.add("translate-y-[-4px]");
+              }
+            } else {
+              link.classList.remove(
+                "bg-[var(--charcoal)]/90",
+                "border-[var(--light-blue)]",
+                "text-[var(--ghost-white)]",
+                "shadow-[0_0_10px_var(--light-blue)]",
+                "translate-x-[-4px]",
+                "translate-y-[-4px]",
+              );
+            }
+          }
+        });
+      });
+    },
+    { threshold: 0.4 },
+  );
+
+  ["experience", "projects", "contact"].forEach((id) => {
+    const section = document.getElementById(id);
+    if (section) observer.observe(section);
+  });
+</script>

@@ -2,25 +2,43 @@
 
 :root {
   --black: #000000;
+  --oxford-black: #0D0C1D;
   --charcoal: #2f4550;
   --paynes-gray: #586f7c;
   --light-blue: #b8dbd9;
   --ghost-white: #f4f4f9;
 
-  /* Roles */
   --color-bg: var(--black);
   --color-surface: var(--charcoal);
-  --color-surface-blur: rgba(47, 69, 80, 0.85); /* charcoal w/ opacity */
+  --color-accent: var(--light-blue);
   --color-text: var(--ghost-white);
   --color-text-muted: var(--light-blue);
-  --color-accent: var(--light-blue);
 }
 
 body {
-  background: linear-gradient(to bottom, var(--black), var(--charcoal));
+  background: linear-gradient(to bottom, var(--black), var(--oxford-black));
+  /* background: var(--oxford-black); */
   color: var(--color-text);
 }
 
-  
-  
-  
+html {
+  scroll-behavior: smooth;
+}
+
+.btn {
+  @apply px-4 py-2 rounded-xl border border-[var(--paynes-gray)]/30 bg-[var(--charcoal)]/70 text-[var(--light-blue)] hover:border-[var(--light-blue)] hover:text-[var(--ghost-white)] transition;
+}
+
+.card {
+  @apply rounded-xl p-6 
+         bg-[rgba(255,255,255,0.05)] /* translucent frosted effect */
+         backdrop-blur-md 
+         border border-[rgba(255,255,255,0.1)] 
+         shadow-sm 
+         transition-all duration-300;
+}
+
+.card:hover {
+  @apply border-[var(--light-blue)] 
+         shadow-[0_0_15px_var(--light-blue)];
+}
