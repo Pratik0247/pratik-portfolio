@@ -19,6 +19,7 @@ import mdx from "@astrojs/mdx";
 
 export default defineConfig({
   site: 'https://pratik0247.github.io/pratik-portfolio/',
+  base: '/pratik-portfolio/',
   vite: {
     plugins: [tailwindcss()],
   },
