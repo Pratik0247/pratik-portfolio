@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en" class="bg-[#0b0b0c] text-[#e5e7eb]"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Projects</title><link rel="stylesheet" href="/_astro/experience.BWNsdKvU.css"></head> <body> <header class="sticky top-0 z-50 backdrop-blur bg-black/30"> <nav id="main-nav" class="fixed top-0 w-full z-50 opacity-0 pointer-events-none transition-opacity duration-700"> <div class="flex justify-between items-center px-6 py-4 bg-[var(--black)]/80 backdrop-blur-md"> <a href="/" class="font-bold text-[var(--ghost-white)]">Pratik</a> <div class="flex gap-6 text-[var(--light-blue)]"> <a href="#projects" class="hover:text-[var(--ghost-white)]">Projects</a> <a href="#experience" class="hover:text-[var(--ghost-white)]">Experience</a> <a href="/resume" class="hover:text-[var(--ghost-white)]">Resume</a> </div> </div> </nav> <script type="module">const e=document.getElementById("main-nav");window.addEventListener("scroll",()=>{window.scrollY>window.innerHeight*.6?(e.classList.remove("opacity-0","pointer-events-none"),e.classList.add("opacity-100")):(e.classList.add("opacity-0","pointer-events-none"),e.classList.remove("opacity-100"))});</script> </header> <main class="max-w-5xl mx-auto px-6 py-10">  <h1 class="text-3xl font-extrabold tracking-tight text-[var(--ghost-white)]">Projects</h1> <p class="mt-2 text-[var(--light-blue)]">Case studies of systems, infra, and AI projects.</p> <div class="mt-10 space-y-10"> <section class="rounded-2xl 
+               bg-[var(--color-surface-blur)] 
+               backdrop-blur-md 
+               border border-[var(--paynes-gray)]/30 
+               shadow-md shadow-black/60 
+               hover:border-[var(--light-blue)] 
+               hover:shadow-[0_0_20px_var(--light-blue)] 
+               transition p-6"> <h2 class="text-xl font-bold text-[var(--ghost-white)]">MoodyTunes — Deep Learning Music Mood Classifier</h2>  <p class="mt-4 text-sm leading-relaxed text-[var(--light-blue)]"> Built a deep learning-based system to classify songs into moods (happy, sad,
+calm, energetic). Enriched Spotify’s 278k-song dataset with Last.fm tags,
+engineered features, and trained multiple architectures (ANN, RCNN, LSTM),
+achieving 90.67% accuracy while reducing 7k+ tags to 35 core categories.
+ </p>  </section><section class="rounded-2xl 
+               bg-[var(--color-surface-blur)] 
+               backdrop-blur-md 
+               border border-[var(--paynes-gray)]/30 
+               shadow-md shadow-black/60 
+               hover:border-[var(--light-blue)] 
+               hover:shadow-[0_0_20px_var(--light-blue)] 
+               transition p-6"> <h2 class="text-xl font-bold text-[var(--ghost-white)]">NarrateNow — Cloud-based Chapter-wise Audiobook Generator</h2>  <p class="mt-4 text-sm leading-relaxed text-[var(--light-blue)]"> Implemented a cloud-native service to convert EPUB books into chapter-specific
+audiobooks using Google TTS. Designed a Kubernetes microservice pipeline with
+RabbitMQ, Redis, and GCS for storage. Processed an 11-chapter, 150-page book
+in under 4 minutes, scaling to 50+ concurrent requests with real-time progress
+tracking and automated recovery.
+ </p>  </section><section class="rounded-2xl 
+               bg-[var(--color-surface-blur)] 
+               backdrop-blur-md 
+               border border-[var(--paynes-gray)]/30 
+               shadow-md shadow-black/60 
+               hover:border-[var(--light-blue)] 
+               hover:shadow-[0_0_20px_var(--light-blue)] 
+               transition p-6"> <h2 class="text-xl font-bold text-[var(--ghost-white)]">ResMatch — Resume Analyzer &amp; Job Recommender</h2>  <p class="mt-4 text-sm leading-relaxed text-[var(--light-blue)]"> Built a resume analysis and job recommender platform using Sentence-BERT and
+scikit-learn for semantic matching. Backend in Flask, deployed via Docker on
+GCP Cloud Run with CI/CD using GitHub Actions. Implemented daily job alerts
+through Cloud Scheduler and Pub/Sub pipelines for automated notifications.
+ </p>  </section><section class="rounded-2xl 
+               bg-[var(--color-surface-blur)] 
+               backdrop-blur-md 
+               border border-[var(--paynes-gray)]/30 
+               shadow-md shadow-black/60 
+               hover:border-[var(--light-blue)] 
+               hover:shadow-[0_0_20px_var(--light-blue)] 
+               transition p-6"> <h2 class="text-xl font-bold text-[var(--ghost-white)]">Structured Reasoning for Table QA</h2>  <p class="mt-4 text-sm leading-relaxed text-[var(--light-blue)]"> Designed a two-phase prompting pipeline for table question answering:
+(1) column selection using LLM reasoning, followed by (2) answer generation
+restricted to those columns. Incorporated FAISS retrieval and LLaMA-3 models.
+Achieved 87% column accuracy and 49.7% answer accuracy on the DataBench dataset.
+ </p>  </section><section class="rounded-2xl 
+               bg-[var(--color-surface-blur)] 
+               backdrop-blur-md 
+               border border-[var(--paynes-gray)]/30 
+               shadow-md shadow-black/60 
+               hover:border-[var(--light-blue)] 
+               hover:shadow-[0_0_20px_var(--light-blue)] 
+               transition p-6"> <h2 class="text-xl font-bold text-[var(--ghost-white)]">VoxOff — End-to-end Karaoke Generator</h2>  <p class="mt-4 text-sm leading-relaxed text-[var(--light-blue)]"> Developed an end-to-end karaoke generation system combining Spleeter for vocal
+separation and ForceAlign for lyrics synchronization. Deployed as microservices
+on GKE with RabbitMQ orchestration and Terraform automation. Integrated OAuth,
+Firestore, and GCS for a seamless hybrid local/cloud pipeline, processing
+100+ live requests with ~2–3 min average per song.
+ </p>  </section> </div>  </main> <footer class="border-t border-white/10 mt-16"> <div class="max-w-5xl mx-auto px-6 py-6 text-sm text-white/70">
+© 2025 Pratik Bhirud
+</div> </footer> </body></html>
