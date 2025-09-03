@@ -1,0 +1,182 @@
+---
+import { getCollection } from "astro:content";
+const { label = "Download Resume", size = "md", id = "resume" } = Astro.props;
+
+let resumes = await getCollection("resumes");
+resumes = resumes.sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+---
+
+<div class="relative" id={`resume-menu-${id}`}>
+  <!-- Main Button -->
+  <button
+    id={`resume-button-${id}`}
+    class={`px-5 py-2 rounded-full font-medium text-center
+      bg-[var(--charcoal)]/90 border border-[var(--light-blue)]
+      text-[var(--ghost-white)] shadow-[0_0_15px_var(--light-blue)]
+      liquid-glass-btn
+      ${size === "sm" ? "text-xs" : "text-sm"}`}
+  >
+    {label}
+  </button>
+
+  <!-- Expanded Menu Container -->
+  <div
+    id={`resume-dropdown-${id}`}
+    class={`absolute hidden flex-col gap-2 z-50
+             bg-[var(--charcoal)]/95 border border-[var(--light-blue)]/40 rounded-xl shadow-lg
+             backdrop-blur-md transition-all duration-300 ease-out
+             ${
+               id === "floating"
+                 ? "top-0 right-full mr-3 min-w-[14rem]"
+                 : id === "mobile"
+                   ? "bottom-full mb-3 left-0 min-w-[12rem]"
+                   : "top-full mt-3 left-0 min-w-[12rem]"
+             }`}
+  >
+    <!-- Header -->
+    <div class="px-4 py-2 border-b border-[var(--light-blue)]/20">
+      <h3 class="text-sm font-semibold text-[var(--ghost-white)]">
+        Resume Options
+      </h3>
+    </div>
+
+    <!-- Resume Items -->
+    {
+      resumes.map((r) => (
+        <a
+          href={r.data.file}
+          target="_blank"
+          class="px-4 py-3 text-sm text-[var(--light-blue)]
+               hover:text-[var(--ghost-white)] hover:bg-[var(--light-blue)]/20 
+               transition-all duration-200 ease-out
+               flex items-center gap-3 group"
+        >
+          <div class="w-2 h-2 rounded-full bg-[var(--light-blue)] group-hover:bg-[var(--ghost-white)] transition-colors" />
+          {r.data.title}
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<script define:vars={{ id }}>
+  document.addEventListener("DOMContentLoaded", function () {
+    const button = document.getElementById(`resume-button-${id}`);
+    const dropdown = document.getElementById(`resume-dropdown-${id}`);
+    const menu = document.getElementById(`resume-menu-${id}`);
+
+    if (button && dropdown) {
+      let isOpen = false;
+
+      // Toggle dropdown on button click
+      button.addEventListener("click", function (e) {
+        e.stopPropagation();
+
+        if (isOpen) {
+          // Close animation
+          dropdown.style.transform =
+            id === "floating"
+              ? "translateX(20px)"
+              : id === "mobile"
+                ? "translateY(20px)"
+                : "translateY(-20px)";
+          dropdown.style.opacity = "0";
+
+          setTimeout(() => {
+            dropdown.classList.add("hidden");
+            dropdown.classList.remove("flex");
+            button.style.transform = "scale(1)";
+            button.style.boxShadow = "0 0 15px var(--light-blue)";
+          }, 150);
+
+          isOpen = false;
+        } else {
+          // Open animation
+          dropdown.classList.remove("hidden");
+          dropdown.classList.add("flex");
+
+          // Initial state for animation
+          dropdown.style.transform =
+            id === "floating"
+              ? "translateX(20px)"
+              : id === "mobile"
+                ? "translateY(20px)"
+                : "translateY(-20px)";
+          dropdown.style.opacity = "0";
+
+          // Animate button
+          button.style.transform = "scale(0.95)";
+          button.style.boxShadow = "0 0 25px var(--light-blue)";
+
+          // Trigger animation with bounce
+          setTimeout(() => {
+            dropdown.style.transform = "translateX(0) translateY(0)";
+            dropdown.style.opacity = "1";
+
+            // Add bounce effect
+            setTimeout(() => {
+              dropdown.style.transform =
+                id === "floating"
+                  ? "translateX(-2px) translateY(0)"
+                  : id === "mobile"
+                    ? "translateX(0) translateY(2px)"
+                    : "translateX(0) translateY(-2px)";
+
+              setTimeout(() => {
+                dropdown.style.transform = "translateX(0) translateY(0)";
+              }, 100);
+            }, 50);
+          }, 10);
+
+          isOpen = true;
+        }
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener("click", function (e) {
+        if (!menu.contains(e.target) && isOpen) {
+          // Close animation
+          dropdown.style.transform =
+            id === "floating"
+              ? "translateX(20px)"
+              : id === "mobile"
+                ? "translateY(20px)"
+                : "translateY(-20px)";
+          dropdown.style.opacity = "0";
+
+          setTimeout(() => {
+            dropdown.classList.add("hidden");
+            dropdown.classList.remove("flex");
+            button.style.transform = "scale(1)";
+            button.style.boxShadow = "0 0 15px var(--light-blue)";
+          }, 150);
+
+          isOpen = false;
+        }
+      });
+
+      // Close dropdown when pressing Escape
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && isOpen) {
+          // Close animation
+          dropdown.style.transform =
+            id === "floating"
+              ? "translateX(20px)"
+              : id === "mobile"
+                ? "translateY(20px)"
+                : "translateY(-20px)";
+          dropdown.style.opacity = "0";
+
+          setTimeout(() => {
+            dropdown.classList.add("hidden");
+            dropdown.classList.remove("flex");
+            button.style.transform = "scale(1)";
+            button.style.boxShadow = "0 0 15px var(--light-blue)";
+          }, 150);
+
+          isOpen = false;
+        }
+      });
+    }
+  });
+</script>

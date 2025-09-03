@@ -7,6 +7,8 @@ export const collections = {
       company: z.string(),
       role: z.string(),
       period: z.string(),
+      start: z.string(),
+      end: z.string(),
       highlights: z.array(z.string()).optional(),
     }),
   }),
@@ -25,6 +27,14 @@ export const collections = {
       role: z.string(),
       period: z.string(),
       highlights: z.array(z.string()).optional(),
+    }),
+  }),
+  resumes: defineCollection({
+    type: "content",
+    schema: z.object({
+      title: z.string(),
+      file: z.string(),
+      order: z.number().optional(),
     }),
   }),
 };

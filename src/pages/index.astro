@@ -1,11 +1,17 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import FloatingNav from "../components/FloatingNav.astro";
 import { getCollection } from "astro:content";
+import FloatingNav from "../components/FloatingNav.astro";
+import ResumeMenu from "../components/ResumeMenu.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const experience = await getCollection("experience");
 const projects = await getCollection("projects");
 const leadership = await getCollection("leadership"); // we can add this collection
+
+// Sort experience by start date in descending order (most recent first)
+const sortedExperience = experience.sort((a, b) => {
+  return b.data.start.localeCompare(a.data.start);
+});
 ---
 
 <BaseLayout title="Home">
@@ -22,10 +28,10 @@ const leadership = await getCollection("leadership"); // we can add this collect
       applications. Currently pursuing my MS in Computer Science at CU Boulder.
     </p>
     <div class="mt-6 flex flex-wrap justify-center gap-4">
-      <a href="/resume" class="btn">View Resume</a>
-      <a href="#experience" class="btn">See Experience</a>
-      <a href="#projects" class="btn">See Projects</a>
-      <a href="#contact" class="btn">Contact Me</a>
+      <ResumeMenu label="Download Resume" id="hero" />
+      <a href="#experience" class="btn liquid-glass-btn">See Experience</a>
+      <a href="#projects" class="btn liquid-glass-btn">See Projects</a>
+      <a href="#contact" class="btn liquid-glass-btn">Contact Me</a>
     </div>
   </section>
 
@@ -34,17 +40,24 @@ const leadership = await getCollection("leadership"); // we can add this collect
     <h2 class="text-3xl font-bold text-[var(--ghost-white)] mb-10">
       Experience
     </h2>
-    <div class="space-y-8">
+    <div class="space-y-6 md:space-y-8">
       {
-        experience.map((exp) => (
+        sortedExperience.map((exp, index) => (
           <div class="card">
-            <h3 class="text-xl font-bold text-[var(--ghost-white)]">
-              {exp.data.company} — {exp.data.role}
-            </h3>
-            <p class="text-sm text-[var(--light-blue)]">{exp.data.period}</p>
-            <ul class="mt-3 list-disc list-inside text-[var(--light-blue)] space-y-1">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-3 gap-2">
+              <h3 class="text-lg md:text-xl font-bold text-[var(--ghost-white)] leading-tight">
+                {exp.data.company} — {exp.data.role}
+              </h3>
+              <span class="text-xs md:text-sm text-[var(--light-blue)] bg-[var(--light-blue)]/10 px-3 py-1 rounded-full self-start md:self-auto">
+                {exp.data.period}
+              </span>
+            </div>
+            <ul class="text-sm md:text-base text-[var(--light-blue)] space-y-2">
               {exp.data.highlights?.map((h) => (
-                <li>{h}</li>
+                <li class="flex items-start gap-3">
+                  <div class="w-1.5 h-1.5 rounded-full bg-[var(--light-blue)] mt-2 flex-shrink-0" />
+                  <span class="leading-relaxed">{h}</span>
+                </li>
               ))}
             </ul>
           </div>
@@ -113,33 +126,33 @@ const leadership = await getCollection("leadership"); // we can add this collect
 
       <div class="flex justify-center gap-4 flex-wrap">
         <a
-          href="mailto:pratik@example.com"
+          href="mailto:pratikbhirud04@gmail.com"
           class="px-4 py-2 rounded-xl border border-white/10
                bg-white/5 backdrop-blur-md text-[var(--light-blue)]
                hover:border-[var(--light-blue)] hover:text-[var(--ghost-white)]
-               hover:shadow-[0_0_10px_var(--light-blue)] transition"
+               hover:shadow-[0_0_10px_var(--light-blue)] liquid-glass-btn"
         >
           📧 Email
         </a>
 
         <a
-          href="https://linkedin.com/in/pratik"
+          href="https://linkedin.com/in/pratik-bhirud"
           target="_blank"
           class="px-4 py-2 rounded-xl border border-white/10
                bg-white/5 backdrop-blur-md text-[var(--light-blue)]
                hover:border-[var(--light-blue)] hover:text-[var(--ghost-white)]
-               hover:shadow-[0_0_10px_var(--light-blue)] transition"
+               hover:shadow-[0_0_10px_var(--light-blue)] liquid-glass-btn"
         >
           🔗 LinkedIn
         </a>
 
         <a
-          href="https://github.com/pratik"
+          href="https://github.com/Pratik0247"
           target="_blank"
           class="px-4 py-2 rounded-xl border border-white/10
                bg-white/5 backdrop-blur-md text-[var(--light-blue)]
                hover:border-[var(--light-blue)] hover:text-[var(--ghost-white)]
-               hover:shadow-[0_0_10px_var(--light-blue)] transition"
+               hover:shadow-[0_0_10px_var(--light-blue)] liquid-glass-btn"
         >
           🖥 GitHub
         </a>
@@ -149,3 +162,24 @@ const leadership = await getCollection("leadership"); // we can add this collect
 
   <FloatingNav />
 </BaseLayout>
+
+<script>
+  // Attach ripple effect to all buttons with .liquid-glass-btn
+  document.querySelectorAll(".liquid-glass-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const rect = btn.getBoundingClientRect();
+      const ripple = btn.querySelector("::before"); // can't access pseudo directly
+
+      // Instead: set CSS vars for click pos
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      btn.style.setProperty("--ripple-x", `${x}px`);
+      btn.style.setProperty("--ripple-y", `${y}px`);
+
+      btn.classList.remove("ripple");
+      void btn.offsetWidth;
+      btn.classList.add("ripple");
+    });
+  });
+</script>
