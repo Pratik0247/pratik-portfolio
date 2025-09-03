@@ -17,7 +17,7 @@
 
 body {
   background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.60), rgba(13, 12, 29, 0.75)), /* adjusted overlay */
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(13, 12, 29, 0.80)), /* adjusted overlay */
     url("/pratik-portfolio/background2.svg");
   background-size: cover;
   background-position: center;
