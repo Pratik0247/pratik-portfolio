@@ -48,7 +48,7 @@ html {
   @apply rounded-xl p-6 border shadow-sm transition-all duration-300 ease-out;
   background: rgba(255, 255, 255, 0.08); /* more transparent */
   backdrop-filter: blur(8px) saturate(150%); /* stronger blur, richer colors */
-  -webkit-backdrop-filter: blur(5px) saturate(150%); /* Safari support */
+  -webkit-backdrop-filter: blur(8px) saturate(150%); /* Safari support */
   border-color: rgba(255, 255, 255, 0.15); /* brighter border */
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* soft depth */
   position: relative;
