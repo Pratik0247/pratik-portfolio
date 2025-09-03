@@ -35,6 +35,31 @@ const sortedExperience = experience.sort((a, b) => {
     </div>
   </section>
 
+  <!-- Liquid Glass Scroll Arrow -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+    <a href="#experience" class="relative flex items-center justify-center">
+      <!-- Glass bubble -->
+      <div
+        class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_0_20px_rgba(184,219,217,0.3)] flex items-center justify-center animate-pulse"
+      >
+        <!-- Arrow -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-7 h-7 text-[var(--light-blue)]"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 4v16m0 0l-6-6m6 6l6-6"></path>
+        </svg>
+      </div>
+    </a>
+  </div>
+
   <!-- Experience -->
   <section id="experience" class="py-20 px-6">
     <h2 class="text-3xl font-bold text-[var(--ghost-white)] mb-10">
@@ -183,3 +208,16 @@ const sortedExperience = experience.sort((a, b) => {
     });
   });
 </script>
+
+<script>
+  document.querySelectorAll(".card").forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty("--cursor-x", `${x}px`);
+      card.style.setProperty("--cursor-y", `${y}px`);
+    });
+  });
+</script>
+

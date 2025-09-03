@@ -16,8 +16,12 @@
 }
 
 body {
-  background: linear-gradient(to bottom, var(--black), var(--oxford-black));
-  /* background: var(--oxford-black); */
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.60), rgba(13, 12, 29, 0.75)), /* adjusted overlay */
+    url("/pratik-portfolio/background2.svg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: var(--color-text);
 }
 
@@ -41,16 +45,48 @@ html {
 }
 
 .card {
-  @apply rounded-xl p-6 backdrop-blur-md border shadow-sm transition-all duration-300 ease-out;
-  background: rgba(255, 255, 255, 0.05); /* translucent frosted effect */
-  border-color: rgba(255, 255, 255, 0.1);
+  @apply rounded-xl p-6 border shadow-sm transition-all duration-300 ease-out;
+  background: rgba(255, 255, 255, 0.08); /* more transparent */
+  backdrop-filter: blur(8px) saturate(150%); /* stronger blur, richer colors */
+  -webkit-backdrop-filter: blur(5px) saturate(150%); /* Safari support */
+  border-color: rgba(255, 255, 255, 0.15); /* brighter border */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* soft depth */
+  position: relative;
+  overflow: hidden; /* contain depression */
 }
 
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 500px at var(--cursor-x, 50%) var(--cursor-y, 50%),
+    rgba(255, 255, 255, 0.10),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.card:hover::after {
+  opacity: 0.6; /* depression shows on hover */
+}
 
 .card:hover {
-  @apply border-[var(--light-blue)] shadow-[0_0_15px_var(--light-blue)];
+  border-color: var(--light-blue);
+  box-shadow: 0 0 25px rgba(184, 219, 217, 0.4); /* glowing edge */
   transform: translateY(-2px) scale(1.02);
 }
+
+.card:active::after {
+  background: radial-gradient(
+    circle 100px at var(--cursor-x, 50%) var(--cursor-y, 50%),
+    rgba(255, 255, 255, 0.25),
+    transparent 75%
+  );
+}
+
 
 /* Base button */
 .liquid-glass-btn {
