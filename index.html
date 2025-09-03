@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" class="bg-[#0b0b0c] text-[#e5e7eb]"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Home</title><link rel="stylesheet" href="/pratik-portfolio/_astro/experience.Cy9RG6kN.css"></head> <body> <main class="max-w-5xl mx-auto px-6">   <section id="hero" class="h-screen flex flex-col justify-center items-center text-center px-6"> <h1 class="text-5xl font-extrabold text-[var(--ghost-white)]">
+<!DOCTYPE html><html lang="en" class="bg-[#0b0b0c] text-[#e5e7eb]"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Home</title><link rel="stylesheet" href="/pratik-portfolio/_astro/experience.B4NUxHrI.css"></head> <body> <main class="max-w-5xl mx-auto px-6">   <section id="hero" class="h-screen flex flex-col justify-center items-center text-center px-6"> <h1 class="text-5xl font-extrabold text-[var(--ghost-white)]">
 Pratik — Software Engineer
 </h1> <p class="mt-4 text-lg text-[var(--light-blue)] max-w-2xl">
 I design and build data systems, cloud infrastructure, and ML-powered
@@ -8,14 +8,17 @@ I design and build data systems, cloud infrastructure, and ML-powered
       text-[var(--ghost-white)] shadow-[0_0_15px_var(--light-blue)]
       liquid-glass-btn
       text-sm"> Download Resume </button> <!-- Expanded Menu Container --> <div id="resume-dropdown-hero" class="absolute hidden flex-col gap-2 z-50
-             bg-[var(--charcoal)]/95 border border-[var(--light-blue)]/40 rounded-xl shadow-lg
-             backdrop-blur-md transition-all duration-300 ease-out
-             top-full mt-3 left-0 min-w-[12rem]"> <!-- Header --> <div class="px-4 py-2 border-b border-[var(--light-blue)]/20"> <h3 class="text-sm font-semibold text-[var(--ghost-white)]">
+            bg-[var(--charcoal)]/95 border border-[var(--light-blue)]/40 rounded-xl shadow-lg
+            backdrop-blur-md transition-all duration-300 ease-out px-4 py-2
+            top-full mt-3 left-1/2 -translate-x-1/2 min-w-[12rem]"> <!-- Header --> <div class="px-4 py-2 border-b border-[var(--light-blue)]/20"> <h3 class="text-sm font-semibold text-[var(--ghost-white)]">
 Resume Options
-</h3> </div> <!-- Resume Items --> <a href="https://1drv.ms/b/c/01bda2abdb3fadcf/ETcxu8Wd4eJNnojkrlRyEK4BIKOylGYhfLOweq1F99U1Rw?e=yFUYHN" target="_blank" class="px-4 py-3 text-sm text-[var(--light-blue)]
-               hover:text-[var(--ghost-white)] hover:bg-[var(--light-blue)]/20 
-               transition-all duration-200 ease-out
-               flex items-center gap-3 group"> <div class="w-2 h-2 rounded-full bg-[var(--light-blue)] group-hover:bg-[var(--ghost-white)] transition-colors"></div> SDE Resume </a> </div> </div> <script>(function(){const id = "hero";
+</h3> </div> <!-- Resume Items --> <a href="https://1drv.ms/b/c/01bda2abdb3fadcf/ETcxu8Wd4eJNnojkrlRyEK4BIKOylGYhfLOweq1F99U1Rw?e=yFUYHN" target="_blank" class="px-4 py-2 text-sm text-[var(--light-blue)]
+        hover:text-[var(--ghost-white)] hover:bg-[var(--light-blue)]/20
+        border border-[var(--light-blue)]/30 hover:border-[var(--light-blue)]
+        shadow-[0_0_10px_var(--light-blue)]/20 hover:shadow-[0_0_15px_var(--light-blue)]/40
+        bg-[rgba(255,255,255,0.08)] backdrop-blur-sm backdrop-saturate-150
+        transition-all duration-300 ease-out
+        rounded-full text-center block"> SDE Resume </a> </div> </div> <script>(function(){const id = "hero";
 
   document.addEventListener("DOMContentLoaded", function () {
     const button = document.getElementById(`resume-button-${id}`);
@@ -151,12 +154,6 @@ in under 4 minutes, scaling to 50+ concurrent requests with real-time progress
 tracking and automated recovery.
 </p> <a href="/projects/narratenow" class="text-sm text-[var(--light-blue)] hover:text-[var(--ghost-white)] hover:underline mt-2 inline-block">
 Read more →
-</a> </div><div class="card"> <h3 class="text-xl font-bold text-[var(--ghost-white)]"> ResMatch — Resume Analyzer &amp; Job Recommender </h3> <p class="text-sm text-[var(--light-blue)]">Built a resume analysis and job recommender platform using Sentence-BERT and
-scikit-learn for semantic matching. Backend in Flask, deployed via Docker on
-GCP Cloud Run with CI/CD using GitHub Actions. Implemented daily job alerts
-through Cloud Scheduler and Pub/Sub pipelines for automated notifications.
-</p> <a href="/projects/resmatch" class="text-sm text-[var(--light-blue)] hover:text-[var(--ghost-white)] hover:underline mt-2 inline-block">
-Read more →
 </a> </div><div class="card"> <h3 class="text-xl font-bold text-[var(--ghost-white)]"> Structured Reasoning for Table QA </h3> <p class="text-sm text-[var(--light-blue)]">Designed a two-phase prompting pipeline for table question answering:
 (1) column selection using LLM reasoning, followed by (2) answer generation
 restricted to those columns. Incorporated FAISS retrieval and LLaMA-3 models.
@@ -169,6 +166,12 @@ on GKE with RabbitMQ orchestration and Terraform automation. Integrated OAuth,
 Firestore, and GCS for a seamless hybrid local/cloud pipeline, processing
 100+ live requests with ~2–3 min average per song.
 </p> <a href="/projects/voxoff" class="text-sm text-[var(--light-blue)] hover:text-[var(--ghost-white)] hover:underline mt-2 inline-block">
+Read more →
+</a> </div><div class="card"> <h3 class="text-xl font-bold text-[var(--ghost-white)]"> ResMatch — Resume Analyzer &amp; Job Recommender </h3> <p class="text-sm text-[var(--light-blue)]">Built a resume analysis and job recommender platform using Sentence-BERT and
+scikit-learn for semantic matching. Backend in Flask, deployed via Docker on
+GCP Cloud Run with CI/CD using GitHub Actions. Implemented daily job alerts
+through Cloud Scheduler and Pub/Sub pipelines for automated notifications.
+</p> <a href="/projects/resmatch" class="text-sm text-[var(--light-blue)] hover:text-[var(--ghost-white)] hover:underline mt-2 inline-block">
 Read more →
 </a> </div> </div> </section>  <section id="leadership" class="py-20 px-6"> <h2 class="text-3xl font-bold text-[var(--ghost-white)] mb-10">
 Leadership & Involvement
@@ -196,14 +199,17 @@ Always happy to connect — reach me on any platform below:
       text-[var(--ghost-white)] shadow-[0_0_15px_var(--light-blue)]
       liquid-glass-btn
       text-xs"> Download Resume </button> <!-- Expanded Menu Container --> <div id="resume-dropdown-floating" class="absolute hidden flex-col gap-2 z-50
-             bg-[var(--charcoal)]/95 border border-[var(--light-blue)]/40 rounded-xl shadow-lg
-             backdrop-blur-md transition-all duration-300 ease-out
-             top-0 right-full mr-3 min-w-[14rem]"> <!-- Header --> <div class="px-4 py-2 border-b border-[var(--light-blue)]/20"> <h3 class="text-sm font-semibold text-[var(--ghost-white)]">
+            bg-[var(--charcoal)]/95 border border-[var(--light-blue)]/40 rounded-xl shadow-lg
+            backdrop-blur-md transition-all duration-300 ease-out px-4 py-2
+            top-0 right-full mr-3 min-w-[14rem]"> <!-- Header --> <div class="px-4 py-2 border-b border-[var(--light-blue)]/20"> <h3 class="text-sm font-semibold text-[var(--ghost-white)]">
 Resume Options
-</h3> </div> <!-- Resume Items --> <a href="https://1drv.ms/b/c/01bda2abdb3fadcf/ETcxu8Wd4eJNnojkrlRyEK4BIKOylGYhfLOweq1F99U1Rw?e=yFUYHN" target="_blank" class="px-4 py-3 text-sm text-[var(--light-blue)]
-               hover:text-[var(--ghost-white)] hover:bg-[var(--light-blue)]/20 
-               transition-all duration-200 ease-out
-               flex items-center gap-3 group"> <div class="w-2 h-2 rounded-full bg-[var(--light-blue)] group-hover:bg-[var(--ghost-white)] transition-colors"></div> SDE Resume </a> </div> </div> <script>(function(){const id = "floating";
+</h3> </div> <!-- Resume Items --> <a href="https://1drv.ms/b/c/01bda2abdb3fadcf/ETcxu8Wd4eJNnojkrlRyEK4BIKOylGYhfLOweq1F99U1Rw?e=yFUYHN" target="_blank" class="px-4 py-2 text-sm text-[var(--light-blue)]
+        hover:text-[var(--ghost-white)] hover:bg-[var(--light-blue)]/20
+        border border-[var(--light-blue)]/30 hover:border-[var(--light-blue)]
+        shadow-[0_0_10px_var(--light-blue)]/20 hover:shadow-[0_0_15px_var(--light-blue)]/40
+        bg-[rgba(255,255,255,0.08)] backdrop-blur-sm backdrop-saturate-150
+        transition-all duration-300 ease-out
+        rounded-full text-center block"> SDE Resume </a> </div> </div> <script>(function(){const id = "floating";
 
   document.addEventListener("DOMContentLoaded", function () {
     const button = document.getElementById(`resume-button-${id}`);
@@ -335,14 +341,17 @@ Resume Options
       text-[var(--ghost-white)] shadow-[0_0_15px_var(--light-blue)]
       liquid-glass-btn
       text-xs"> Resume </button> <!-- Expanded Menu Container --> <div id="resume-dropdown-mobile" class="absolute hidden flex-col gap-2 z-50
-             bg-[var(--charcoal)]/95 border border-[var(--light-blue)]/40 rounded-xl shadow-lg
-             backdrop-blur-md transition-all duration-300 ease-out
-             bottom-full mb-3 left-0 min-w-[12rem]"> <!-- Header --> <div class="px-4 py-2 border-b border-[var(--light-blue)]/20"> <h3 class="text-sm font-semibold text-[var(--ghost-white)]">
+            bg-[var(--charcoal)]/95 border border-[var(--light-blue)]/40 rounded-xl shadow-lg
+            backdrop-blur-md transition-all duration-300 ease-out px-4 py-2
+            bottom-full mb-3 left-0 min-w-[12rem]"> <!-- Header --> <div class="px-4 py-2 border-b border-[var(--light-blue)]/20"> <h3 class="text-sm font-semibold text-[var(--ghost-white)]">
 Resume Options
-</h3> </div> <!-- Resume Items --> <a href="https://1drv.ms/b/c/01bda2abdb3fadcf/ETcxu8Wd4eJNnojkrlRyEK4BIKOylGYhfLOweq1F99U1Rw?e=yFUYHN" target="_blank" class="px-4 py-3 text-sm text-[var(--light-blue)]
-               hover:text-[var(--ghost-white)] hover:bg-[var(--light-blue)]/20 
-               transition-all duration-200 ease-out
-               flex items-center gap-3 group"> <div class="w-2 h-2 rounded-full bg-[var(--light-blue)] group-hover:bg-[var(--ghost-white)] transition-colors"></div> SDE Resume </a> </div> </div> <script>(function(){const id = "mobile";
+</h3> </div> <!-- Resume Items --> <a href="https://1drv.ms/b/c/01bda2abdb3fadcf/ETcxu8Wd4eJNnojkrlRyEK4BIKOylGYhfLOweq1F99U1Rw?e=yFUYHN" target="_blank" class="px-4 py-2 text-sm text-[var(--light-blue)]
+        hover:text-[var(--ghost-white)] hover:bg-[var(--light-blue)]/20
+        border border-[var(--light-blue)]/30 hover:border-[var(--light-blue)]
+        shadow-[0_0_10px_var(--light-blue)]/20 hover:shadow-[0_0_15px_var(--light-blue)]/40
+        bg-[rgba(255,255,255,0.08)] backdrop-blur-sm backdrop-saturate-150
+        transition-all duration-300 ease-out
+        rounded-full text-center block"> SDE Resume </a> </div> </div> <script>(function(){const id = "mobile";
 
   document.addEventListener("DOMContentLoaded", function () {
     const button = document.getElementById(`resume-button-${id}`);
