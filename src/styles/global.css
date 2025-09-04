@@ -137,3 +137,56 @@ html {
     filter: blur(6px); /* soften as it fades */
   }
 }
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 2.5s ease-out forwards;
+}
+
+@keyframes card-slide-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.card-animate {
+  opacity: 0; /* start hidden */
+}
+
+.card-slide-left {
+  animation: card-slide-left 0.8s ease-out forwards;
+}
+
+@keyframes section-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-animate {
+  opacity: 0; /* start hidden */
+}
+
+.section-slide-up {
+  animation: section-slide-up 0.9s ease-out forwards;
+}
