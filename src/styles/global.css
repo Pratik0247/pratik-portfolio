@@ -17,7 +17,7 @@
 
 body {
   background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(13, 12, 29, 0.90)), /* adjusted overlay */
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.70), rgba(13, 12, 29, 0.85)), /* adjusted overlay */
     url("/pratik-portfolio/background2.svg");
   background-size: cover;
   background-position: center;
@@ -150,7 +150,7 @@ html {
 }
 
 .animate-fade-in {
-  animation: fade-in 2.5s ease-out forwards;
+  animation: fade-in 0.5s ease-out forwards;
 }
 
 @keyframes card-slide-left {
@@ -188,5 +188,65 @@ html {
 }
 
 .section-slide-up {
-  animation: section-slide-up 0.9s ease-out forwards;
+  animation: section-slide-up 0.5s ease-out forwards;
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out-right {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+}
+
+.slide-up {
+  animation: slide-up 0.25s ease-out forwards;
+}
+
+.slide-down {
+  animation: slide-down 0.25s ease-in forwards;
+}
+
+.slide-in-right {
+  animation: slide-in-right 0.25s ease-out forwards;
+}
+
+.slide-out-right {
+  animation: slide-out-right 0.25s ease-in forwards;
 }

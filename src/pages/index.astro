@@ -15,73 +15,77 @@ const sortedExperience = experience.sort((a, b) => {
 ---
 
 <BaseLayout title="Home">
-<section
-  id="hero"
-  class="h-screen flex flex-col justify-center items-center text-center px-6"
->
-  <!-- Name -->
-  <h1
-    class="text-6xl md:text-7xl font-extrabold text-[var(--ghost-white)] mb-4 opacity-0 animate-fade-in"
-    style="animation-delay: 0.1s"
+  <section
+    id="hero"
+    class="h-screen flex flex-col justify-center items-center text-center px-6"
   >
-    Pratik Bhirud
-  </h1>
+    <!-- Name -->
+    <h1
+      class="text-6xl md:text-7xl font-extrabold text-[var(--ghost-white)] mb-4 opacity-0 animate-fade-in"
+      style="animation-delay: 0.1s"
+    >
+      Pratik Bhirud
+    </h1>
 
-  <!-- Role -->
-  <h2
-    class="text-3xl md:text-4xl font-semibold text-[var(--light-blue)] mb-8 opacity-0 animate-fade-in"
-    style="animation-delay: 0.5s"
-  >
-    Software Engineer
-  </h2>
+    <!-- Role -->
+    <h2
+      class="text-3xl md:text-4xl font-semibold text-[var(--light-blue)] mb-8 opacity-0 animate-fade-in"
+      style="animation-delay: 0.5s"
+    >
+      Software Engineer
+    </h2>
 
-  <!-- Tagline -->
-  <p
-    class="mt-2 text-lg md:text-xl text-[var(--light-blue)]/90 max-w-2xl leading-relaxed opacity-0 animate-fade-in"
-    style="animation-delay: 1s"
-  >
-    I design and build data systems, cloud infrastructure, and ML-powered
-    applications. <br />
-    Currently pursuing my MS in Computer Science at CU Boulder.
-  </p>
+    <!-- Tagline -->
+    <p
+      class="mt-2 text-lg md:text-xl text-[var(--light-blue)]/90 max-w-2xl leading-relaxed opacity-0 animate-fade-in"
+      style="animation-delay: 1s"
+    >
+      I design and build data systems, cloud infrastructure, and ML-powered
+      applications. <br />
+      Currently pursuing my MS in Computer Science at CU Boulder.
+    </p>
 
-  <!-- Buttons -->
-  <div
-    class="mt-10 flex flex-wrap justify-center gap-4 opacity-0 animate-fade-in"
-    style="animation-delay: 1.5s"
-  >
-    <ResumeMenu label="Download Resume" id="hero" />
-    <a href="#experience" class="btn liquid-glass-btn">See Experience</a>
-    <a href="#projects" class="btn liquid-glass-btn">See Projects</a>
-    <a href="#contact" class="btn liquid-glass-btn">Contact Me</a>
-  </div>
-</section>
-
+    <!-- Buttons -->
+    <div
+      class="mt-10 flex flex-wrap justify-center gap-4 opacity-0 animate-fade-in"
+      style="animation-delay: 1.5s"
+    >
+      <ResumeMenu label="Download Resume" id="hero" />
+      <a href="#experience" class="btn liquid-glass-btn">See Experience</a>
+      <a href="#projects" class="btn liquid-glass-btn">See Projects</a>
+      <a href="#contact" class="btn liquid-glass-btn">Contact Me</a>
+    </div>
+  </section>
 
   <!-- Liquid Glass Scroll Arrow -->
-  <div 
-  class="absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 animate-fade-in"
-  style="animation-delay: 2.2s;">
-    <a href="#experience" class="relative flex items-center justify-center">
-      <!-- Glass bubble -->
-      <div
-        class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_0_20px_rgba(184,219,217,0.3)] flex items-center justify-center animate-pulse"
+  <!-- Scroll Chevron -->
+  <div
+    class="absolute bottom-6 right-6 md:bottom-8 md:left-1/2 md:right-auto
+         transform md:-translate-x-1/2
+         md:opacity-0 animate-fade-in"
+    style="animation-delay: 3s;"
+  >
+    <a
+      href="#experience"
+      class="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center
+           border border-white/20 bg-white/10 backdrop-blur-md
+           text-[var(--light-blue)]
+           hover:text-[var(--ghost-white)] hover:border-[var(--light-blue)]
+           hover:shadow-[0_0_20px_var(--light-blue)]
+           transition-all duration-300 ease-out"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
       >
-        <!-- Arrow -->
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-7 h-7 text-[var(--light-blue)]"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 4v16m0 0l-6-6m6 6l6-6"></path>
-        </svg>
-      </div>
+        <!-- Chevron Down (no stick) -->
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"
+        ></path>
+      </svg>
     </a>
   </div>
 
@@ -169,7 +173,9 @@ const sortedExperience = experience.sort((a, b) => {
       Get in Touch
     </h2>
 
-    <div class="card inline-block text-center max-w-lg mx-auto space-y-6 card-animate">
+    <div
+      class="card inline-block text-center max-w-lg mx-auto space-y-6 card-animate"
+    >
       <p class="text-[var(--light-blue)]">
         Lets connect! — You can reach me on any platform below:
       </p>
@@ -258,7 +264,7 @@ const sortedExperience = experience.sort((a, b) => {
         }
       });
     },
-    { threshold: 0.2 } // Trigger when 20% of section is visible
+    { threshold: 0.2 }, // Trigger when 20% of section is visible
   );
 
   sections.forEach((section) => observer.observe(section));
@@ -285,8 +291,20 @@ const sortedExperience = experience.sort((a, b) => {
         }
       });
     },
-    { threshold: 0.2 }
+    { threshold: 0.2 },
   );
 
   sections.forEach((section) => sectionObserver.observe(section));
+</script>
+
+<script>
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > window.innerHeight * 0.7) {
+      scrollTopBtn.classList.remove("hidden");
+    } else {
+      scrollTopBtn.classList.add("hidden");
+    }
+  });
 </script>
