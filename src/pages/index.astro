@@ -12,6 +12,15 @@ const leadership = await getCollection("leadership"); // we can add this collect
 const sortedExperience = experience.sort((a, b) => {
   return b.data.start.localeCompare(a.data.start);
 });
+
+// Sort leadership by start date in descending order (most recent first)
+console.log(leadership)
+const sortedLeadership = leadership.sort((a, b) => {
+  const startA = Number(a.data.start)  || 0; // default to 0 if missing
+  const startB = Number(b.data.start) || 0;
+  return startB - startA;
+});
+console.log(sortedLeadership)
 ---
 
 <BaseLayout title="Home">
@@ -58,7 +67,6 @@ const sortedExperience = experience.sort((a, b) => {
   </section>
 
   <!-- Liquid Glass Scroll Arrow -->
-  <!-- Scroll Chevron -->
   <div
     class="absolute bottom-6 right-6 md:bottom-8 md:left-1/2 md:right-auto
          transform md:-translate-x-1/2
@@ -131,12 +139,12 @@ const sortedExperience = experience.sort((a, b) => {
               {p.data.title}
             </h3>
             <p class="text-sm text-[var(--light-blue)]">{p.data.summary}</p>
-            <a
+            {/* <a
               href={`/projects/${p.slug}`}
               class="text-sm text-[var(--light-blue)] hover:text-[var(--ghost-white)] hover:underline mt-2 inline-block"
             >
               Read more →
-            </a>
+            </a> */}
           </div>
         ))
       }
@@ -146,11 +154,11 @@ const sortedExperience = experience.sort((a, b) => {
   <!-- Leadership -->
   <section id="leadership" class="py-20 px-6 section-animate">
     <h2 class="text-3xl font-bold text-[var(--ghost-white)] mb-10">
-      Leadership & Involvement
+      Leadership & Responsibilities
     </h2>
     <div class="space-y-8">
       {
-        leadership.map((l) => (
+        sortedLeadership.map((l) => (
           <div class="card card-animate">
             <h3 class="text-xl font-bold text-[var(--ghost-white)]">
               {l.data.company} — {l.data.role}
@@ -167,67 +175,69 @@ const sortedExperience = experience.sort((a, b) => {
     </div>
   </section>
 
-<!-- Contact -->
-<section id="contact" class="py-20 px-6 section-animate">
-  <h2 class="text-3xl font-bold text-[var(--ghost-white)] mb-10 text-center">
-    Get in Touch
-  </h2>
+  <!-- Contact -->
+  <section id="contact" class="py-20 px-6 section-animate">
+    <h2 class="text-3xl font-bold text-[var(--ghost-white)] mb-10 text-center">
+      Get in Touch
+    </h2>
 
-  <div
-    class="card card-animate mx-auto flex flex-col md:flex-row items-center md:items-center gap-8 w-fit px-8 py-6"
-  >
-    <!-- Profile Photo -->
-    <div class="flex-shrink-0">
-      <img
-        src="/images/profile.jpg"
-        alt="Pratik Bhirud"
-        class="w-50 h-50 rounded-full border-2 border-[var(--light-blue)] shadow-md hover:scale-105 transition-transform duration-300"
-      />
-    </div>
+    <div
+      class="card card-animate mx-auto flex flex-col md:flex-row items-center md:items-center gap-8 w-fit px-8 py-6"
+    >
+      <!-- Profile Photo -->
+      <div class="flex-shrink-0">
+        <img
+          src="/images/profile.jpg"
+          alt="Pratik Bhirud"
+          class="w-50 h-50 rounded-full border-2 border-[var(--light-blue)] shadow-md hover:scale-105 transition-transform duration-300"
+        />
+      </div>
 
-    <!-- Contact Info -->
-    <div class="flex flex-col items-center md:items-start gap-6">
-      <p class="text-[var(--light-blue)] text-center md:text-left">
-        Lets connect! You can reach me on any platform below:
-      </p>
+      <!-- Contact Info -->
+      <div class="flex flex-col items-center md:items-start gap-6">
+        <p class="text-[var(--light-blue)] text-center md:text-left">
+          Lets connect! You can reach me on any platform below:
+        </p>
 
-      <!-- Pills Row -->
-      <div class="flex flex-row gap-4 flex-wrap justify-center md:justify-start">
-        <a
-          href="mailto:pratikbhirud04@gmail.com"
-          class="px-4 py-2 rounded-xl border border-white/10
+        <!-- Pills Row -->
+        <div
+          class="flex flex-row gap-4 flex-wrap justify-center md:justify-start"
+        >
+          <a
+            href="mailto:pratikbhirud04@gmail.com"
+            class="px-4 py-2 rounded-xl border border-white/10
                  bg-white/5 backdrop-blur-md text-[var(--light-blue)]
                  hover:border-[var(--light-blue)] hover:text-[var(--ghost-white)]
                  hover:shadow-[0_0_10px_var(--light-blue)] liquid-glass-btn text-center"
-        >
-          📧 Email
-        </a>
+          >
+            📧 Email
+          </a>
 
-        <a
-          href="https://linkedin.com/in/pratik-bhirud"
-          target="_blank"
-          class="px-4 py-2 rounded-xl border border-white/10
+          <a
+            href="https://linkedin.com/in/pratik-bhirud"
+            target="_blank"
+            class="px-4 py-2 rounded-xl border border-white/10
                  bg-white/5 backdrop-blur-md text-[var(--light-blue)]
                  hover:border-[var(--light-blue)] hover:text-[var(--ghost-white)]
                  hover:shadow-[0_0_10px_var(--light-blue)] liquid-glass-btn text-center"
-        >
-          🔗 LinkedIn
-        </a>
+          >
+            🔗 LinkedIn
+          </a>
 
-        <a
-          href="https://github.com/Pratik0247"
-          target="_blank"
-          class="px-4 py-2 rounded-xl border border-white/10
+          <a
+            href="https://github.com/Pratik0247"
+            target="_blank"
+            class="px-4 py-2 rounded-xl border border-white/10
                  bg-white/5 backdrop-blur-md text-[var(--light-blue)]
                  hover:border-[var(--light-blue)] hover:text-[var(--ghost-white)]
                  hover:shadow-[0_0_10px_var(--light-blue)] liquid-glass-btn text-center"
-        >
-          🖥 GitHub
-        </a>
+          >
+            🖥 GitHub
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <FloatingNav />
 </BaseLayout>

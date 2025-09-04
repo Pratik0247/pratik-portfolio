@@ -26,6 +26,8 @@ export const collections = {
       company: z.string(),
       role: z.string(),
       period: z.string(),
+      start: z.string(),
+      end: z.string(),
       highlights: z.array(z.string()).optional(),
     }),
   }),
