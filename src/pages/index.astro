@@ -14,13 +14,13 @@ const sortedExperience = experience.sort((a, b) => {
 });
 
 // Sort leadership by start date in descending order (most recent first)
-console.log(leadership)
+
 const sortedLeadership = leadership.sort((a, b) => {
   const startA = Number(a.data.start)  || 0; // default to 0 if missing
   const startB = Number(b.data.start) || 0;
   return startB - startA;
 });
-console.log(sortedLeadership)
+
 ---
 
 <BaseLayout title="Home">
@@ -187,7 +187,7 @@ console.log(sortedLeadership)
       <!-- Profile Photo -->
       <div class="flex-shrink-0">
         <img
-          src="/images/profile.jpg"
+          src="/pratik-portfolio/images/profile.jpg"
           alt="Pratik Bhirud"
           class="w-50 h-50 rounded-full border-2 border-[var(--light-blue)] shadow-md hover:scale-105 transition-transform duration-300"
         />
